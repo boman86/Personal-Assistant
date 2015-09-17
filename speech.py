@@ -1,31 +1,36 @@
-import pyaudio,os
+import pyaudio, os, subprocess
 import speech_recognition as sr
+from os import system
 
-def excel():
-        print("excel started");
-
-def internet():
-        print("internet started");
-
-def media():
-        print("media started");
-
-def mainfunction(source):
-    audio = r.listen(source)
-    user = r.recognize_google(audio, key="")
-    print(user)
-    if user == "Excel":
-        excel()
-    elif user == "Internet":
-        internet()
-    elif user == "music":
-        media()
-
-if __name__ == "__main__":
+def main():
+    # Initialize API keys and speech recognition
+    WIT_AI_KEY = "45SK2K6B7EUC6GOJY26N2REG7LRJF4BT"
     r = sr.Recognizer()
-    with sr.Microphone() as source:
-        while 1:
-            mainfunction(source)
+    r.pause_threshold = 0.5
+        
+    while True:
+        with sr.Microphone() as source:
+            audio = r.listen(source)
 
+        # Case on keyword "APOLLO"
+        try: 
+            # Try to recognize audio
+            user = r.recognize_wit(audio, key=WIT_AI_KEY)
+            
+            # DEBUGGING PURPOSES
+
+            if user.lower() == "banana":
+                # Simulate taking in a command by beeping
+                audio_file = "/Users/richard/Desktop/Repos/PersonalAssistant/sounds/initialization_beep.wav"
+                return_code = subprocess.call(["afplay", audio_file])
+                system('say what''s up?')
+                break
+        except:
+            print("");
+            # error debugging
+
+
+if __name__ == '__main__':
+        main()
 
 
