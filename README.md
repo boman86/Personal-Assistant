@@ -1,4 +1,6 @@
-### Welcome to GitHub Pages.
+Check out the website @ http://dipochiang.github.io/Personal-Assistant/
+
+### Overview
 Based on the J.A.R.V.I.S. machine portrayed in the Iron Man films, this personal assistant (name tbd) is based of Python and runs on a Raspberry Pi.
 
 ### Tools and APIs
