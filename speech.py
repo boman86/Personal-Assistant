@@ -1,5 +1,4 @@
-import pyaudio, os, subprocess
-import wit
+import wit, json
 
 def main():
     # Initialize API keys and speech recognition
@@ -8,7 +7,9 @@ def main():
     wit.init()
 
     response = wit.voice_query_auto(WIT_AI_KEY)
+    parsed_response = json.loads(response)
     print('response: {}'.format(response))
+    print(parsed_response['intent'])
 
     wit.close()
     
