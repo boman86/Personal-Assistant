@@ -9,7 +9,7 @@ def main():
     response = wit.voice_query_auto(WIT_AI_KEY)
     parsed_response = json.loads(response)
     print('response: {}'.format(response))
-    print(parsed_response['outcomes']['intent'])
+    print(parsed_response['outcomes'][0]['intent'])
 
     wit.close()
     
