@@ -6,7 +6,8 @@ config = {'firstname': '',
           'zip': ''
           }
 
-# Creates the config file that holds information needed for 
+# Creates the config file that holds information needed in later computations
+# holds data including the ai's name, the user's name and the user's zip code
 
 def createConfig():
     ainame = raw_input('Please enter the name for your personal assistant: ')
