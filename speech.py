@@ -8,7 +8,7 @@ def main():
 
     wit.voice_query_start(WIT_AI_KEY)
 
-    time.sleep(5)
+    time.sleep(4)
 
     response = wit.voice_query_stop()
     
