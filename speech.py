@@ -1,4 +1,6 @@
 import wit, json, time
+import os, pygame
+from voiceTTS import voice123
 
 # Main function simulates an always-on microphone waiting for a voice command
 # given by a keyword read through a configuration file.
@@ -6,24 +8,35 @@ import wit, json, time
 def main():
     # Initialize API keys and speech recognition
     WIT_AI_KEY = "45SK2K6B7EUC6GOJY26N2REG7LRJF4BT"
-
+            
     # initialize WIT.AI
     wit.init()
 
     wit.voice_query_start(WIT_AI_KEY)
 
-    # sleep 5 seconds to chop voice queries to manageable sections
-    time.sleep(5)
-    # retrieve reponse from server
+    time.sleep(4)
+
     response = wit.voice_query_stop()
+
+    # case for the keyword voice command
+    chooseIntent(getIntent(response))
+    wit.close()
+
+def mainQuery():
+    # Initialize API keys and speech recognition
+    WIT_AI_KEY = "45SK2K6B7EUC6GOJY26N2REG7LRJF4BT"
+            
+    # initialize WIT.AI
+    wit.init()
+
+    response = wit.voice_query_auto(WIT_AI_KEY)
 
     ##DEBUG##
     print('response: {}'.format(response))
     print(getIntent(response))
 
-    # case for the keyword voice command
-    chooseIntent(getIntent(response))
     wit.close()
+
 
 def getIntent(response):
     # convert returned api call to json object
@@ -39,9 +52,13 @@ def chooseIntent(intent):
 
     # if intent is to "startup" we call to the initiate function
     if(intent == 'startup'):
+        os.system('aplay -D plughw:1 ~/Repos/Personal-Assistant/sounds/initialization_beep.wav')
+        voice123('what is up richard?')
         print('@THIS IS WHEN APOLLO TAKES QUESTIONS@')
+        mainQuery()
     # if there is no intent we have no command and we wait for another one
-    main()
+    else:
+        main()
 
     
 if __name__ == '__main__':
