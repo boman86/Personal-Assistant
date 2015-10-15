@@ -6,20 +6,25 @@ from voiceTTS import voice
 # Currently has limited capabilities due to inadequate understanding of the API.
 # TODO: query song from Spotify, better voice output, removing of playlist, restart song.
 
-global client
 
-client = MPDClient()                        
-client.timeout = 10                          
-client.idletimeout = None                   
-client.connect("192.168.0.103", 6600)   
-client.password("1234")
-client.setvol(20)
+def mpdInit():
+    global client
+    client = MPDClient()                        
+    client.timeout = 10                          
+    client.idletimeout = None                   
+    client.connect("192.168.0.103", 6600)   
+    client.password("1234")
+    client.setvol(20)
+    return client
 
 # Takes in a function call from the main file that can also take in a query parameter 
 # for use in querying songs/playlists as well as other variable inputs.
 def mpdCommands(command, query):
     # Plays the next song
-    if command == 'nextSong':
+    if command == 'playSong':
+        voice("playing song")
+        client.play()
+    elif command == 'nextSong':
         client.next()
         voice("playing next song")
     # Plays the previous song

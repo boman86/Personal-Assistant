@@ -11,7 +11,6 @@ def getUpdate():
     UPDATE_ID = bot.getUpdates()[-1].update_id
 
     updates = bot.getUpdates(offset=UPDATE_ID, timeout=10)
-    print("reached here")
     for update in updates:
         chat_id = update.message.chat_id
         message = update.message.text.encode('utf-8')
@@ -24,7 +23,11 @@ def getUpdate():
 
 def caseCommands(command):
     if command == "/music":
-        voice("The final exam was mostly in C not C not")
+        print("reached music")
+        mpdInit()
+        # mpdCommands("playPlaylist", "Welcome to the House")
+        mpdCommands("pauseSong", None)
+        mpdTerminate()
     else:
         return
 
