@@ -25,8 +25,8 @@ def mpdCommands(command, query):
         voice("playing song")
         client.play()
     elif command == 'nextSong':
-        client.next()
         voice("playing next song")
+        client.next()
     # Plays the previous song
     elif command == 'prevSong':
         client.previous()

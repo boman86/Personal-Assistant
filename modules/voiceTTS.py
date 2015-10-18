@@ -11,7 +11,10 @@ def voice(input):
 
     engine.setProperty('volume', volume-0.5)
     engine.setProperty('rate', rate-65)
-    engine.say(input)
-    
+    if input != "":
+        engine.say(input)
+    else: 
+        print("there is nothing to say")
+
     engine.runAndWait()
 
