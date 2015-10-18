@@ -16,14 +16,13 @@ query1 = 'weather tomorrow in Pittsburgh, PA'
 
 def queryWolfram(query):
     res = client.query(query)
+    interpretation = res
+    result = res.pods[1].text.encode('utf-8').strip()
 
+    print result
     # This part is used if you want to format a certain response from the text given 
     # back to you from WolframAlpha. 
-    if ('weather' or 'forecast' in res.pods[0].text.encode('utf-8').strip()):
-        print("hey u got here nice!")
-        voice("good job dude")
-        return
-    else:
-        return
+    if ('weather' or 'forecast' in response):
+        voice(result)
 
 queryWolfram(query1)

@@ -23,10 +23,16 @@ def getUpdate():
 
 def caseCommands(command):
     if command == "/music":
-        print("reached music")
+        input2 = command.split(" ")[1]
         mpdInit()
-        # mpdCommands("playPlaylist", "Welcome to the House")
-        mpdCommands("pauseSong", None)
+        mpdCommands("playPlaylist", "Welcome to the House")
+        if input2 == 'play':
+            mpdCommands("playSong", None)
+        elif input2 == 'pause':
+            mpdCommands("pauseSong", None)
+        elif input2 == 'playlist':
+            playlist = command.split(" ")[2]
+            mpdCommands("playPlaylist", playlist)
         mpdTerminate()
     else:
         return
