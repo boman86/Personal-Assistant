@@ -113,9 +113,7 @@ def chooseIntent(response):
         mpdCommands("playPlaylist", getEntities(response)['playlist'][0]['value'])
         mpdCommands("playSong", None)
     elif (intent == 'stopsong'):
-        print("this should stop the song")
         mpdCommands('pauseSong', None)
-        print("no?")
     elif (intent == 'nextsong'):
         mpdCommands('nextSong', None)
     elif (intent == 'appreciation'):

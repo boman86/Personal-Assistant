@@ -1,12 +1,13 @@
-import wolframalpha
-import xmltodict
+import tungsten
 from voiceTTS import voice
+
+# remember to install xmlutils
 
 # initialize Wolfram Alpha ID
 appid = 'YRT5RT-4H23GGJQXG'
-client = wolframalpha.Client(appid)
+client = tungsten.Tungsten(appid)
 
-query1 = 'weather tomorrow in Pittsburgh, PA'
+query1 = "asdalskdmasldkasm"
 
 # for pod in res.pods:
 #     print(pod.title)
@@ -15,14 +16,22 @@ query1 = 'weather tomorrow in Pittsburgh, PA'
 #xmltodict.parse(res)
 
 def queryWolfram(query):
-    res = client.query(query)
-    interpretation = res
-    result = res.pods[1].text.encode('utf-8').strip()
+    response = client.query(query)
 
-    print result
-    # This part is used if you want to format a certain response from the text given 
-    # back to you from WolframAlpha. 
-    if ('weather' or 'forecast' in response):
-        voice(result)
+    try: 
+        print response.pods[1].format['plaintext'][0]
+        voice("Do you want on this subject?")
+    except:
+        voice("I don't understand what you're saying")
+
+        
+
+    # if response.success:
+    #     for pod in response.pods:
+    #         print pod.title
+    #         print "==============="
+    #         print pod.format['plaintext'][0]
+
+
 
 queryWolfram(query1)
