@@ -56,3 +56,4 @@ def weatherLocation(location):
     else: 
         print("An error has occured:" + weather['error']['description'])
 
+weatherLocation("pittsburgh,pa")
