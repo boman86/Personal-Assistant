@@ -1,8 +1,10 @@
 import pyttsx
+from gtts import gTTS
+import os
 
-# A text-to-speech engine using pyttsx. 
+# Text-to-speech with pyttsx or gtts (Google Text to Speech).
 
-def voice(input):
+def voicePyttsx(input):
     engine = pyttsx.init()
 
     volume = engine.getProperty('volume')
@@ -18,3 +20,15 @@ def voice(input):
 
     engine.runAndWait()
 
+# TTS implementation using Google TTS API.
+#
+def voiceGtts(input):
+    tts = gTTS(text=input, lang='en')
+    tts.save("temp.mp3")
+    os.system("afplay temp.mp3")
+    os.system("rm temp.mp3")
+
+# Choose the library to use for TTS:
+
+def voice(input):
+    voiceGtts(input)
