@@ -1,6 +1,6 @@
 import json, urllib2
 import random
-from voiceTTS import voice
+from voicePi import voice
 
 ## We use the Reddit json API to retrieve recent headlines for different subreddits.
 
@@ -14,10 +14,15 @@ def inquire():
 
     headlines = json.loads(response)
 
-    # for i in range(1,10):
-    #     print headlines['data']['children'][i]['data']['title'] + "\n"
+    for i in range(1,10):
+        print headlines['data']['children'][i]['data']['title'] + "\n"
 
-    for child in headlines['data']['children']:
-        print child['data']['title'] + "\n"
+    # for child in headlines['data']['children']:
+    #     print child['data']['title'] + "\n"
+
+    # print headlines['data']['children'][0]['data']['title']
+
+    # voice("hello all")
 
 
+inquire()

@@ -1,5 +1,5 @@
 import tungsten
-from voiceTTS import voice
+from voicePi import voice
 
 # remember to install xmlutils
 

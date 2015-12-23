@@ -1,6 +1,6 @@
 import urllib2
 import json, time
-from voiceTTS import voice
+from voicePi import voice
 
 ## Weather query using AerisWeather's endpoints. Currently only able to search a location.
 ## TODO: work on adding dates and time functionality.

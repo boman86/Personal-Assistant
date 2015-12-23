@@ -21,7 +21,6 @@ def voicePyttsx(input):
     engine.runAndWait()
 
 # TTS implementation using Google TTS API.
-#
 def voiceGtts(input):
     tts = gTTS(text=input, lang='en')
     tts.save("temp.mp3")
@@ -32,3 +31,4 @@ def voiceGtts(input):
 
 def voice(input):
     voicePyttsx(input)
+    

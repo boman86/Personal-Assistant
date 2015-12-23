@@ -1,6 +1,6 @@
 import requests, json, time
 from mpd import MPDClient
-from voiceTTS import voice
+from voicePi import voice
 
 # Connects to the MPD Server running on the Raspberry Pi and calls functions to complete certain tasks.
 # Currently has limited capabilities due to inadequate understanding of the API.
