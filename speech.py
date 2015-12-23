@@ -120,7 +120,7 @@ def chooseIntent(response):
         voice("no problem")
     elif (intent == 'weather'):
         loc = getEntities(response)['location']['value']
-        if loc = 'errorparse':
+        if loc == 'errorparse':
             data = open("config.json")
             data = json.loads(data)
             weatherLocation(data["zip"])
