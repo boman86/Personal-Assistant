@@ -1,6 +1,7 @@
 import pyttsx
 from gtts import gTTS
 import os
+from os import system
 
 # Text-to-speech with pyttsx or gtts (Google Text to Speech).
 
@@ -27,8 +28,11 @@ def voiceGtts(input):
     os.system("afplay temp.mp3")
     os.system("rm temp.mp3")
 
-# Choose the library to use for TTS:
+# temporary voice for debugging when testing on a Mac
+def macVoice(input):
+    system('say -v Victoria ' + "'" + input + "'")
 
+# Choose the library to use for TTS:
 def voice(input):
-    voicePyttsx(input)
+    macVoice(input)
     
