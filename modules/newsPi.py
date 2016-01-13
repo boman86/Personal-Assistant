@@ -6,6 +6,12 @@ from voicePi import voice
 
 inquiry = ['What would you like to know more about?']
 
+def getNews():
+    try:
+        inquire()
+    except:
+        getNews()
+
 def inquire():
     # voice(random.choice(inquiry))
     # voice("here give me a second")
@@ -14,15 +20,24 @@ def inquire():
 
     headlines = json.loads(response)
 
-    for i in range(1,10):
+    # print json.dumps(headlines, sort_keys=True, indent=4, separators=(',', ': '))
+
+    voice("How many articles would you like to hear about?")
+
+    for i in range(0,5):
         print headlines['data']['children'][i]['data']['title'] + "\n"
+
+    voice(headlines['data']['children'][0]['data']['title'])
+    voice("would you like to hear more?")
+    voice(headlines['data']['children'][1]['data']['title'])
+
 
     # for child in headlines['data']['children']:
     #     print child['data']['title'] + "\n"
 
     # print headlines['data']['children'][0]['data']['title']
 
-    # voice("hello all")
+    voice("hello ")
 
 
-inquire()
+getNews()
