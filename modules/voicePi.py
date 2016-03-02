@@ -2,6 +2,7 @@ import pyttsx
 from gtts import gTTS
 import os
 from os import system
+import sys
 
 # Text-to-speech with pyttsx or gtts (Google Text to Speech).
 
@@ -34,5 +35,8 @@ def macVoice(input):
 
 # Choose the library to use for TTS:
 def voice(input):
-    macVoice(input)
+    if (sys.platform == "darwin"):
+        macVoice(input)
+    else:
+        voicePyttsx(input)
     
