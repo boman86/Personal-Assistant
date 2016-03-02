@@ -12,7 +12,7 @@ def mpdInit():
     client = MPDClient()                        
     client.timeout = 10                          
     client.idletimeout = None                   
-    client.connect("192.168.0.103", 6600)   
+    client.connect("localhost", 6600)   
     client.password("1234")
     client.setvol(20)
     return client
@@ -78,3 +78,5 @@ def mpdTerminate():
     client.close()                              
     print("client has closed")
     client.disconnect()   
+
+mpdInit()
